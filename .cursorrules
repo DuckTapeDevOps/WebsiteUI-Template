@@ -1,0 +1,53 @@
+# Cursor Rules for WebsiteUI-Template
+
+This repository is an upstream template for website projects. Follow these rules when making changes.
+
+## Critical Preservation Requirements
+
+### Build Output Structure
+- **DO NOT** change the build output directory (`landing/dist/`)
+- **DO NOT** change build commands (`npm run build`, etc.)
+- **DO NOT** modify Vite configuration in ways that change output structure
+- **PRESERVE** asset path patterns (relative paths from root)
+
+### Deployment Behavior
+- **DO NOT** change the deployment flow: Build → S3 → CloudFront → Route53
+- **DO NOT** modify infrastructure resource definitions (S3, CloudFront, Route53 structure)
+- **DO NOT** change SPA routing behavior (403/404 → index.html)
+- **PRESERVE** Terraform resource patterns (use variables, not hardcoded values)
+
+## Abstraction Patterns
+
+### When Abstracting Brand-Specific Content
+1. **Use configuration files** (`src/config/`) instead of hardcoding values
+2. **Make components prop-driven** - accept content via props, default from config
+3. **Keep component structure** - only change values, not patterns
+4. **Update infrastructure variables** - remove defaults, require explicit values
+
+### Before Major Changes
+1. **Read `docs/PROJECT_CONTEXT.md`** - understand current state
+2. **Check `docs/DECISIONS.md`** - understand architectural decisions
+3. **Review `docs/CLEANUP_PREPARATION.md`** - follow phased approach
+4. **Verify build output** - ensure `dist/` structure unchanged
+
+## Code Style
+
+- Follow existing TypeScript/React patterns
+- Use Chakra UI components consistently
+- Maintain component composition patterns
+- Keep routes stable (or document changes)
+
+## Testing Requirements
+
+Before merging:
+- Build succeeds: `cd landing && npm run build`
+- Dev server works: `cd landing && npm run dev`
+- TypeScript compiles: No type errors
+- Linting passes: `npm run lint`
+
+## Reference
+
+- See `docs/PROJECT_CONTEXT.md` for authoritative repository state
+- See `docs/DECISIONS.md` for architectural decisions
+- See `docs/CLEANUP_PREPARATION.md` for execution plan
+
