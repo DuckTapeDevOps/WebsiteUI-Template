@@ -1,84 +1,46 @@
 import { Container, VStack } from '@chakra-ui/react'
 import { FaUsers, FaMapMarkerAlt, FaComments, FaShip, FaHeart } from 'react-icons/fa'
 import { HeroSection, FeatureGrid, SectionWrapper, NetworkSection, CTASection } from '../components'
+import { siteConfig } from '../config/site'
 
 const Home = () => {
-  const coreFeatures = [
-    {
-      icon: FaMapMarkerAlt,
-      title: "Find Your Fleet",
-      description: "See which marina your connections are docked at. Never wonder if friends are nearby again.",
-      color: "blue.500"
-    },
-    {
-      icon: FaComments,
-      title: "Marina Chat", 
-      description: "Join location-based conversations. Share local tips, organize meetups, or just say hello.",
-      color: "blue.500"
-    },
-    {
-      icon: FaShip,
-      title: "Maritime Story",
-      description: "Share your journey, routes, and experiences with the community that gets it.",
-      color: "blue.500"
-    }
-  ]
+  // Map icons to feature titles (keeping icon mapping logic)
+  const iconMap: Record<string, typeof FaMapMarkerAlt> = {
+    'Find Your Fleet': FaMapMarkerAlt,
+    'Marina Chat': FaComments,
+    'Maritime Story': FaShip,
+    'Connect': FaUsers,
+    'Share Location': FaMapMarkerAlt,
+    'Build Community': FaHeart,
+  }
 
-  const networkFeatures = [
-    {
-      icon: FaUsers,
-      title: "Connect",
-      description: "Build your maritime network. Follow fellow boaters and stay connected across anchorages.",
-      color: "blue.500"
-    },
-    {
-      icon: FaMapMarkerAlt,
-      title: "Share Location",
-      description: "Let your network know where you are. Privacy controls let you choose who sees what level of detail.",
-      color: "green.500"
-    },
-    {
-      icon: FaHeart,
-      title: "Build Community",
-      description: "Transform every marina from a transient stop into a place where you have friends.",
-      color: "red.500"
-    }
-  ]
+  const coreFeatures = siteConfig.home.coreFeatures.map((feature, index) => ({
+    icon: iconMap[feature.title] || FaMapMarkerAlt,
+    title: feature.title,
+    description: feature.description,
+    color: index === 0 ? "blue.500" : index === 1 ? "blue.500" : "blue.500"
+  }))
 
-  const networkLevels = [
-    {
-      badge: "CONNECTIONS",
-      badgeColor: "blue",
-      title: "Connections",
-      description: "Your broader maritime network - follow and connect with the friends you make along your journey"
-    },
-    {
-      badge: "CREW", 
-      badgeColor: "green",
-      title: "Crew",
-      description: "People linked to your vessel with access to shared dashboards and planning"
-    },
-    {
-      badge: "FLEET",
-      badgeColor: "purple", 
-      title: "Fleet",
-      description: "Groups of vessels traveling together - temporary or ongoing maritime partnerships"
-    }
-  ]
+  const networkFeatures = siteConfig.home.networkFeatures.map((feature, index) => ({
+    icon: iconMap[feature.title] || FaUsers,
+    title: feature.title,
+    description: feature.description,
+    color: index === 0 ? "blue.500" : index === 1 ? "green.500" : "red.500"
+  }))
 
   return (
     <Container maxW="container.xl" py={10}>
       <VStack spacing={16} align="stretch">
         <HeroSection
-          title="Naval Nomad Community"
-          subtitle="Turning Marinas into Villages"
-          description="Connect with fellow boaters, share your location with your maritime network, and transform every marina from a transient stop into a vibrant community where you always have friends nearby."
+          title={siteConfig.home.hero.title}
+          subtitle={siteConfig.home.hero.subtitle}
+          description={siteConfig.home.hero.description}
           primaryButton={{
-            text: "Join the Community",
-            to: "/community",
+            text: siteConfig.home.hero.primaryButton.text,
+            to: siteConfig.home.hero.primaryButton.to,
             icon: <FaUsers />
           }}
-          secondaryText="Your maritime network awaits • Privacy-first location sharing"
+          secondaryText={siteConfig.home.hero.secondaryText}
         />
 
         <SectionWrapper title="🌊 Community-First Features">
@@ -90,25 +52,18 @@ const Home = () => {
         </SectionWrapper>
 
         <SectionWrapper title="Your Maritime Network" bg="accent">
-          <NetworkSection levels={networkLevels} />
+          <NetworkSection levels={siteConfig.home.networkLevels} />
         </SectionWrapper>
 
         <CTASection
-          title="🔮 Coming Soon"
-          description="We're building the future of maritime community. Here's what's on the horizon:"
-          buttons={[
-            {
-              text: "Explore Marinas",
-              to: "/marina-explorer",
-              icon: <FaMapMarkerAlt />
-            },
-            {
-              text: "Plan Routes", 
-              to: "/routes",
-              variant: "outline",
-              icon: <FaShip />
-            }
-          ]}
+          title={siteConfig.home.cta.title}
+          description={siteConfig.home.cta.description}
+          buttons={siteConfig.home.cta.buttons.map(button => ({
+            text: button.text,
+            to: button.to,
+            variant: button.to === '/routes' ? 'outline' as const : 'solid' as const,
+            icon: button.text === 'Explore Marinas' ? <FaMapMarkerAlt /> : <FaShip />
+          }))}
         />
       </VStack>
     </Container>

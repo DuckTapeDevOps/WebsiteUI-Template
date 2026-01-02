@@ -1,28 +1,19 @@
 import { Box, Container, Heading, SimpleGrid, Stack, Text, Icon } from '@chakra-ui/react'
 import { FaSearch, FaCalendarAlt, FaHandshake, FaAnchor } from 'react-icons/fa'
+import { siteConfig } from '../../config/site'
 
-const steps = [
-  {
-    icon: FaSearch,
-    title: 'Find Your Perfect Match',
-    description: 'Browse through our curated selection of boats and slips, filtered by location, amenities, and your preferences.'
-  },
-  {
-    icon: FaCalendarAlt,
-    title: 'Book Your Stay',
-    description: 'Select your dates, review the terms, and secure your spot with our simple booking process.'
-  },
-  {
-    icon: FaHandshake,
-    title: 'Connect with Hosts',
-    description: 'Communicate directly with boat owners, ask questions, and get to know your future home.'
-  },
-  {
-    icon: FaAnchor,
-    title: 'Start Your Journey',
-    description: 'Arrive at your new floating home, settle in, and begin your life as a Naval Nomad.'
-  }
-]
+const iconMap: Record<number, typeof FaSearch> = {
+  0: FaSearch,
+  1: FaCalendarAlt,
+  2: FaHandshake,
+  3: FaAnchor,
+}
+
+const steps = siteConfig.howItWorks.steps.map((step, index) => ({
+  icon: iconMap[index] || FaSearch,
+  title: step.title,
+  description: step.description,
+}))
 
 const HowItWorks = () => {
   return (
@@ -36,10 +27,10 @@ const HowItWorks = () => {
               fontFamily="heading"
               color="navy.500"
             >
-              How It Works
+              {siteConfig.howItWorks.title}
             </Heading>
             <Text fontSize="lg" color="gray.600" maxW="2xl" mx="auto">
-              Whether you're a boat owner or a digital nomad, our platform makes it easy to connect and start your liveaboard journey.
+              {siteConfig.howItWorks.description}
             </Text>
           </Stack>
 

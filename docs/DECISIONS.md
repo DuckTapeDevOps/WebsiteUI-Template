@@ -71,6 +71,22 @@ Future projects (e.g., `DuckTapeDevOpsUI`) are created from this template via Gi
 - Make colors/fonts configurable via config files
 - Provide default neutral theme
 
+## Configuration Override Pattern
+
+Child repositories should override `landing/src/config/site.ts` to customize branding:
+
+1. Copy `landing/src/config/site.example.ts` as a reference
+2. Modify `landing/src/config/site.ts` with your brand values
+3. All components automatically use the config values
+
+The config file exports a `SiteConfig` interface and `siteConfig` object containing:
+- Brand name, tagline, description
+- Navigation items
+- Contact/waitlist URLs and text
+- Hero section content
+- Home page features and content
+- How it works steps
+
 ## Reference Documents
 
 - `docs/PROJECT_CONTEXT.md` - Current repository state (authoritative)
