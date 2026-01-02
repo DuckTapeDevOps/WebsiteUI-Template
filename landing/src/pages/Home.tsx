@@ -28,6 +28,15 @@ const Home = () => {
     color: index === 0 ? "blue.500" : index === 1 ? "green.500" : "red.500"
   }))
 
+  // Map icon names to React components for CTA buttons
+  const ctaIconMap: Record<string, typeof FaMapMarkerAlt> = {
+    'FaMapMarkerAlt': FaMapMarkerAlt,
+    'FaShip': FaShip,
+    'FaUsers': FaUsers,
+    'FaComments': FaComments,
+    'FaHeart': FaHeart,
+  }
+
   return (
     <Container maxW="container.xl" py={10}>
       <VStack spacing={16} align="stretch">
@@ -58,12 +67,16 @@ const Home = () => {
         <CTASection
           title={siteConfig.home.cta.title}
           description={siteConfig.home.cta.description}
-          buttons={siteConfig.home.cta.buttons.map(button => ({
-            text: button.text,
-            to: button.to,
-            variant: button.to === '/routes' ? 'outline' as const : 'solid' as const,
-            icon: button.text === 'Explore Marinas' ? <FaMapMarkerAlt /> : <FaShip />
-          }))}
+          buttons={siteConfig.home.cta.buttons.map(button => {
+            const IconComponent = button.iconName ? ctaIconMap[button.iconName] : undefined
+            
+            return {
+              text: button.text,
+              to: button.to,
+              variant: (button.variant || 'solid') as 'solid' | 'outline' | 'ghost' | 'link',
+              icon: IconComponent ? <IconComponent /> : undefined,
+            }
+          })}
         />
       </VStack>
     </Container>

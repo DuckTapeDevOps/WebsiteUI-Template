@@ -124,10 +124,14 @@ export const siteConfigExample: SiteConfig = {
         {
           text: "Button 1",
           to: "/path1",
+          variant: "solid",
+          iconName: "FaMapMarkerAlt",
         },
         {
           text: "Button 2",
           to: "/path2",
+          variant: "outline",
+          iconName: "FaShip",
         },
       ],
     },

@@ -80,6 +80,8 @@ export interface SiteConfig {
       buttons: Array<{
         text: string
         to: string
+        variant?: 'solid' | 'outline' | 'ghost' | 'link'
+        iconName?: string
       }>
     }
   }
@@ -219,10 +221,14 @@ export const siteConfig: SiteConfig = {
         {
           text: "Explore Marinas",
           to: "/marina-explorer",
+          variant: "solid",
+          iconName: "FaMapMarkerAlt",
         },
         {
           text: "Plan Routes",
           to: "/routes",
+          variant: "outline",
+          iconName: "FaShip",
         },
       ],
     },
