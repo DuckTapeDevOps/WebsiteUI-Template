@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#1A2C47"/>
+  <text x="400" y="300" font-family="Arial" font-size="24" fill="white" text-anchor="middle">
+    Hero Image Placeholder
+  </text>
+  <path d="M200,400 L600,400 L500,300 L300,300 Z" fill="#0057E6" opacity="0.5"/>
+  <circle cx="400" cy="200" r="50" fill="#0057E6" opacity="0.5"/>
+</svg> 

@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <title>Naval Nomad - Live Your Dream Life at Sea</title>
+  </head>
+  <body>
+    <script>
+      try {
+        var colorModeKey = 'chakra-ui-color-mode';
+        var colorModeItem = localStorage.getItem(colorModeKey);
+        var colorMode = colorModeItem === 'dark' ? 'dark' : 'light';
+        if (colorMode === 'dark') {
+          document.body.classList.add('chakra-ui-dark');
+        }
+      } catch (e) {}
+    </script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
