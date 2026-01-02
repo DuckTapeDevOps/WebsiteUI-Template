@@ -151,7 +151,7 @@ export const siteConfig: SiteConfig = {
       to: "/",
     },
     image: {
-      src: "/hero-image.svg",
+      src: "/brand/hero-image.svg",
       alt: "Luxury yacht at sunset",
     },
   },

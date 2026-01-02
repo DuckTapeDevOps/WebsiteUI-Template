@@ -87,6 +87,29 @@ The config file exports a `SiteConfig` interface and `siteConfig` object contain
 - Home page features and content
 - How it works steps
 
+## Brand Assets Location
+
+Brand-specific static assets are organized in `landing/public/brand/`:
+
+- **Hero Images**: `/brand/hero-image.svg` (or `.png`, `.jpg`)
+- **Favicon**: `/brand/favicon.ico`
+- **Other Assets**: Logos, brand-specific images, etc.
+
+Assets in this directory are referenced via `/brand/` paths in configuration files and HTML. During build, these assets are copied to the output directory with the same path structure.
+
+**Customization**: Replace assets in `public/brand/` with your brand's assets. Ensure file names match the paths referenced in `src/config/site.ts` and `index.html`.
+
+## Content Organization
+
+Page content is currently defined in `src/config/site.ts` under structured keys (e.g., `home`, `hero`, `contact`).
+
+A `landing/content/` directory has been established as a placeholder for future content organization. This directory:
+- Contains example content structure (`content/home.ts`)
+- Documents intended usage patterns
+- Is **not yet wired into pages** (content still comes from `site.ts`)
+
+Future phases may move content to this directory or establish a hybrid approach where content files are imported alongside config values.
+
 ## Reference Documents
 
 - `docs/PROJECT_CONTEXT.md` - Current repository state (authoritative)
