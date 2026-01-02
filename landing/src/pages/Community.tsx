@@ -12,6 +12,7 @@ import {
   useColorModeValue
 } from '@chakra-ui/react'
 import { Link as RouterLink } from 'react-router-dom'
+import { siteConfig } from '../config/site'
 import { 
   FaAnchor, 
   FaUsers, 
@@ -110,7 +111,7 @@ const Community = () => {
                 </Heading>
                 <Text fontSize="lg" maxW="3xl" mx="auto" color={useColorModeValue('gray.600', 'gray.300')}>
                   When people uproot, their biggest fear isn't food or money, it's losing their community.
-                  Social media already solves keeping in touch with the past. Naval Nomad is about building 
+                  Social media already solves keeping in touch with the past. {siteConfig.brand.name} is about building 
                   community in the present, wherever you dock.
                 </Text>
               </Box>
@@ -263,7 +264,7 @@ const Community = () => {
                     <Text color={useColorModeValue('gray.700', 'gray.200')}>• <strong>Feel at home anywhere:</strong> The community and familiarity of the app become your anchor, not any single location.</Text>
                     <Text color={useColorModeValue('gray.700', 'gray.200')}>• <strong>Every review you write helps everyone:</strong> Your marina insights become valuable data for fellow travelers, reducing anxiety about new destinations.</Text>
                     <Text color={useColorModeValue('gray.700', 'gray.200')}>• <strong>Natural network growth:</strong> As Great Loopers, snowbirds, and cruisers spread the platform, your comfort zone expands with them.</Text>
-                    <Text color={useColorModeValue('gray.700', 'gray.200')}>• <strong>Rising tides raise all ships:</strong> The more naval nomads and marinas that join, the easier it becomes to feel at home wherever you dock. And the more opinions you feed back to the community, the easier it will be for the next nomad to start their adventure.</Text>
+                    <Text color={useColorModeValue('gray.700', 'gray.200')}>• <strong>Rising tides raise all ships:</strong> The more {siteConfig.brand.name.toLowerCase()}s and marinas that join, the easier it becomes to feel at home wherever you dock. And the more opinions you feed back to the community, the easier it will be for the next nomad to start their adventure.</Text>
                   </VStack>
                 </VStack>
               </SimpleGrid>

@@ -1,4 +1,6 @@
 import { Box, Container, Heading, Text, Button, Stack, Image } from '@chakra-ui/react'
+import { Link as RouterLink } from 'react-router-dom'
+import { siteConfig } from '../../config/site'
 
 const Hero = () => {
   return (
@@ -23,30 +25,35 @@ const Hero = () => {
               fontFamily="heading"
               lineHeight="1.2"
             >
-              Live Your Dream Life at Sea
+              {siteConfig.hero.title}
             </Heading>
             <Text fontSize="xl" opacity={0.9}>
-              Connect with boat owners and find your perfect liveaboard experience. 
-              Whether you're a digital nomad seeking adventure or a boat owner looking to share your vessel.
+              {siteConfig.hero.description}
             </Text>
             <Stack direction={{ base: 'column', sm: 'row' }} gap={4}>
               <Button
+                as={RouterLink}
+                to={siteConfig.hero.primaryButton.to}
                 size="lg"
                 colorScheme="brand"
                 bg="brand.500"
                 _hover={{ bg: 'brand.600' }}
               >
-                Find Your Boat
+                {siteConfig.hero.primaryButton.text}
               </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                borderColor="white"
-                color="white"
-                _hover={{ bg: 'whiteAlpha.200' }}
-              >
-                List Your Boat
-              </Button>
+              {siteConfig.hero.secondaryButton && (
+                <Button
+                  as={RouterLink}
+                  to={siteConfig.hero.secondaryButton.to}
+                  size="lg"
+                  variant="outline"
+                  borderColor="white"
+                  color="white"
+                  _hover={{ bg: 'whiteAlpha.200' }}
+                >
+                  {siteConfig.hero.secondaryButton.text}
+                </Button>
+              )}
             </Stack>
           </Stack>
           <Box
@@ -56,8 +63,8 @@ const Hero = () => {
             h="400px"
           >
             <Image
-              src="/hero-image.svg"
-              alt="Luxury yacht at sunset"
+              src={siteConfig.hero.image.src}
+              alt={siteConfig.hero.image.alt}
               objectFit="cover"
               w="100%"
               h="100%"

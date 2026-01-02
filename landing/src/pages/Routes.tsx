@@ -12,6 +12,7 @@ import {
 } from '@chakra-ui/react'
 import { Link as RouterLink } from 'react-router-dom'
 import { FaRoute, FaUsers, FaMapMarkerAlt, FaCompass, FaBell } from 'react-icons/fa'
+import { siteConfig } from '../config/site'
 
 const RouteExplorer = () => {
   const cardBg = useColorModeValue('white', 'gray.700')
@@ -97,7 +98,7 @@ const RouteExplorer = () => {
               Community First, Features Second
             </Heading>
             <Text fontSize="lg" color={useColorModeValue('gray.600', 'gray.300')} maxW="3xl">
-              We're building Naval Nomad based on what our community needs most. 
+              We're building {siteConfig.brand.name} based on what our community needs most. 
               Join us now to help shape these features and connect with fellow boaters.
             </Text>
             <Button
