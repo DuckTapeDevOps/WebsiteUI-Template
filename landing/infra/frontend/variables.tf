@@ -1,7 +1,6 @@
 variable "domain_name" {
   description = "The domain name for the website"
   type        = string
-  default     = "navalnomad.com"
 }
 
 variable "environment" {
@@ -32,4 +31,9 @@ variable "cloudfront_max_ttl" {
   description = "Maximum TTL for CloudFront cache"
   type        = number
   default     = 86400
+}
+
+variable "resource_name_prefix" {
+  description = "Prefix for AWS resource names (e.g., 'naval-nomad', 'ducktape-devops'). Used for Cognito, Secrets Manager, and IAM resources."
+  type        = string
 } 

@@ -1,0 +1,31 @@
+# Frontend Infrastructure Variables
+# 
+# Copy this file to terraform.tfvars and fill in your values.
+# DO NOT commit terraform.tfvars to version control.
+
+# Required: Your domain name (e.g., example.com)
+domain_name = "example.com"
+
+# Optional: Environment name (default: "prod")
+environment = "prod"
+
+# Optional: CloudFront price class (default: "PriceClass_100")
+# Options: PriceClass_100 (North America and Europe only)
+#          PriceClass_200 (includes Asia, Middle East, Africa)
+#          PriceClass_All (all edge locations worldwide)
+price_class = "PriceClass_100"
+
+# Optional: CloudFront cache TTL settings (in seconds)
+# Minimum TTL: 0 (default)
+cloudfront_min_ttl = 0
+
+# Default TTL: 3600 (1 hour, default)
+cloudfront_default_ttl = 3600
+
+# Maximum TTL: 86400 (24 hours, default)
+cloudfront_max_ttl = 86400
+
+# Required: Prefix for AWS resource names (e.g., 'naval-nomad', 'ducktape-devops')
+# Used for Cognito, Secrets Manager, and IAM resource naming
+resource_name_prefix = "your-resource-prefix"
+

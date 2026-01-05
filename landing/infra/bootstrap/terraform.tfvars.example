@@ -1,0 +1,24 @@
+# Bootstrap Infrastructure Variables
+# 
+# Copy this file to terraform.tfvars and fill in your values.
+# DO NOT commit terraform.tfvars to version control.
+
+# Required: GitHub repository in the format 'owner/repo'
+# This is used for GitHub OIDC provider configuration
+github_repo = "your-org/your-repo"
+
+# Required: AWS region to deploy to (default: "us-east-1")
+# Note: CloudFront ACM certificates must be in us-east-1
+aws_region = "us-east-1"
+
+# Required: Name of the S3 bucket for the frontend
+# This bucket will store the built static website files
+s3_bucket_name = "your-domain-com"
+
+# Required: ID of the CloudFront distribution
+# This is created by the frontend infrastructure and referenced here
+cloudfront_distribution_id = "YOUR_CLOUDFRONT_DISTRIBUTION_ID"
+
+# Required: Your domain name (e.g., example.com)
+domain_name = "example.com"
+

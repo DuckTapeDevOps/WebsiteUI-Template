@@ -1,13 +1,11 @@
 variable "github_repo" {
   description = "GitHub repository in the format 'owner/repo'"
   type        = string
-  default     = "krypton/NavalNomadUI"
 }
 
 variable "s3_bucket_name" {
   description = "Name of the S3 bucket for the frontend"
   type        = string
-  default     = "naval-nomad-frontend"
 }
 
 variable "cloudfront_distribution_id" {
@@ -24,5 +22,4 @@ variable "aws_region" {
 variable "domain_name" {
   description = "The domain name for the website"
   type        = string
-  default     = "navalnomad.com"
 }

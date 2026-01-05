@@ -1,6 +1,6 @@
 # User pool client
 resource "aws_cognito_user_pool_client" "naval_nomad" {
-  name = "naval-nomad-web-client"
+  name = "${var.resource_name_prefix}-web-client"
 
   user_pool_id = data.terraform_remote_state.bootstrap.outputs.user_pool_id
 
@@ -75,7 +75,7 @@ data "terraform_remote_state" "bootstrap" {
 
 # IAM role for Cognito
 resource "aws_iam_role" "cognito_auth_role" {
-  name = "naval-nomad-cognito-auth-role"
+  name = "${var.resource_name_prefix}-cognito-auth-role"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"

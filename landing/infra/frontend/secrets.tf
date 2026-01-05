@@ -1,13 +1,13 @@
 resource "aws_secretsmanager_secret" "google_oauth" {
-  name = "naval-nomad/google-oauth"
-  description = "Google OAuth credentials for Naval Nomad"
+  name = "${var.resource_name_prefix}/google-oauth"
+  description = "Google OAuth credentials for ${var.domain_name}"
 }
 
 # Note: The actual secret value should be created manually in AWS Console or via AWS CLI
 # This is because we don't want to store the actual secret in our Terraform code
 # You can create it using:
 # aws secretsmanager create-secret \
-#   --name naval-nomad/google-oauth \
+#   --name ${var.resource_name_prefix}/google-oauth \
 #   --secret-string '{"client_id":"your-client-id","client_secret":"your-client-secret"}'
 
 data "aws_secretsmanager_secret" "google_oauth" {
